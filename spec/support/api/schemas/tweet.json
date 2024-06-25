@@ -1,36 +1,23 @@
 {
-    "type": "object",
-    "required": ["tweet"],
-    "properties": {
-      "user" : {
-        "type" : "object",
-        "required" : [
-          "id",
-          "body",
-          "user_id",
-          "retweet",
-          "quote_id"
-    ],
-        "properties" : {
-          "id" : { "type" : "integer" },
-          "body" : { "type" : "string" },
-          "user_id" : { "type" : "string" },
-          "retweet" : { "type" : "boolean" },
-          "quote_id" : { "type" : "integer" },
-          "created_at" : { "type" : "string", "format": "date-time" },
-          "updated_at" : { "type" : "string", "format": "date-time" }
-        }
+  "type": "object",
+  "required": ["tweet"],
+  "properties": {
+    "tweet": {
+      "type": "object",
+      "required": [
+        "id",
+        "user_id", 
+        "body"
+      ],
+      "properties": {
+        "id": { "type": "integer" },
+        "user_id": { "type": "integer" },
+        "body": { "type": "string" },
+        "retweet": { "type": ["boolean", "null"] },
+        "quote_id": { "type": ["integer", "null"] },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
       }
-    },"foreignKeys": [
-      {
-          "name": "fk_user_id",
-          "reference": {
-              "type": "object",
-              "properties": {
-                  "table": { "const": "users" },
-                  "column": { "const": "id" }
-              }
-             }
-           }
-         ]
-       }
+    }
+  }
+}

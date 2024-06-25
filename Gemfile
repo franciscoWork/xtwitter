@@ -67,4 +67,15 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "json-schema"
+ 
+  
 end
+
+# Use this gems to create authentication 
+  gem 'jwt'
+  gem 'devise'
+
+# Use this gem to fix and create your frontend design 
+gem "bootstrap"
+gem "font-awesome-rails"
+gem "sassc-rails"

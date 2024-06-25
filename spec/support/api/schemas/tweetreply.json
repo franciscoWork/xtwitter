@@ -1,34 +1,22 @@
 {
     "type": "object",
-    "required": ["id", "tweet_id", "user_id", "created_at", "updated_at"],
+    "required": ["tweetreply"],
     "properties": {
-        "id": { "type": "integer" },
-        "tweet_id": { "type": "integer" },
-        "user_id": { "type": "integer" },
-        "body": { "type": "string", "nullable": true },
-        "created_at": { "type": "string", "format": "date-time" },
-        "updated_at": { "type": "string", "format": "date-time" }
-    },
-    "foreignKeys": [
-        {
-            "name": "fk_tweet_id",
-            "reference": {
-                "type": "object",
-                "properties": {
-                    "table": { "const": "tweets" },
-                    "column": { "const": "id" }
-                }
-            }
-        },
-        {
-            "name": "fk_user_id",
-            "reference": {
-                "type": "object",
-                "properties": {
-                    "table": { "const": "users" },
-                    "column": { "const": "id" }
-                }
-            }
+      "tweetreply": {
+        "type": "object", 
+        "required": [
+          "user_id", 
+          "tweet_id", 
+          "body"
+      ],
+        "properties": {
+          "id": { "type": "integer" },
+          "user_id": { "type": "integer" },
+          "tweet_id": { "type": "integer" },
+          "body": { "type": "string" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" }
         }
-    ]
-}
+      }
+    }
+  }

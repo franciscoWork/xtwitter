@@ -1,27 +1,24 @@
 {
-    "type": "object",
-    "required": ["user"],
-    "properties": {
-      "user" : {
-        "type" : "object",
-        "required" : [
-          "id",
-          "username",
-          "name",
-          "lastname",
-          "email",
-          "password"
-        ],
-        "properties" : {
-          "id" : { "type" : "integer" },
-          "username" : { "type" : "string" },
-          "name" : { "type" : "string" },
-          "lastname" : { "type" : "string" },
-          "last_name" : { "type" : "string" },
-          "password" : { "type" : "string" },
-          "created_at" : { "type" : "string", "format": "date-time" },
-          "updated_at" : { "type" : "string", "format": "date-time" }
-        }
+  "type": "hash",
+  "required": ["user"],
+  "properties": {
+    "user" : {
+      "type" : "object",
+      "required" : [
+        "username",
+        "email",
+        "password"
+      ],
+      "properties" : {
+        "id" : {"type" : "string"},
+        "username" : { "type" : "string" },
+        "name" : { "type" : "string"},
+        "lastname" : { "type" : "string" },
+        "email" : { "type" : "string" },
+        "password" : { "type" : "string" },
+        "created_at" : { "type" : "string","format": "date-time" },
+        "updated_at" : { "type" : "string","format": "date-time" }
       }
     }
   }
+}

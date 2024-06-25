@@ -13,7 +13,7 @@ class Bookmark < ApplicationRecord
 
   #create a bookmark
   def self.bookmarked(tweet_id, user_id)
-    Bookmark.create(tweet_id: tweet_id user_id: user_id) 
+    Bookmark.create(tweet_id: tweet_id, user_id: user_id) 
   end
   
 end

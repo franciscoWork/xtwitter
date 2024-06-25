@@ -23,13 +23,10 @@ class Tweet < ApplicationRecord
 
 #method retweet 
 
-def self.retweet(tweet_id, user_id)
-  retweet = Tweet.new(
-    
-    retweet: true
-  )
+def self.retweet(tweet_id)
+  retweet = Tweet.find(tweet_id).update_attribute(:retweet, true)
 
-  if retweet.save
+  if retweet = true 
 
     return retweet
   else
@@ -53,17 +50,20 @@ def self.create_quote_tweet(user_id, text, tweet_id)
 end 
 
     #method hastags
-    def create_of_find_hasgtags(text)
+    def self.create_or_find_hasgtags(text)
       hashtags = text.scan(/#\w+/)
+      print hashtags 
 
-      hashtags.each do |tag| 
-        hashtag_name = tag[1..-1]
-        hashtag = hashtag.find_or_create_by(name: hashtag_name)
+      # hashtags.each do |tag| 
+      #   hashtag_name = tag[1..-1]
 
-        unless hastags.include?(hastag)
-          self.hastags << hashtag 
-        end
-      end
+        # print hashtag_name
+      #   hashtag = hashtag.find_or_create_by(name: hashtag_name)
+
+      #   unless hastags.include?(hastag)
+      #     self.hastags << hashtag 
+      #   end
+      # end
     end 
 
 end

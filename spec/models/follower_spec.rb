@@ -11,7 +11,7 @@ RSpec.describe Follower, type: :model do
     follower = FactoryBot.create(:follower)
   end 
 
-  describe "validations" do
+  describe "validations" ,validate: true do 
     let!(:existing_follower) { FactoryBot.create(:follower) } 
     it{ should validate_uniqueness_of(:follower_id).scoped_to(:followee_id)}
   end

@@ -15,8 +15,8 @@ RSpec.describe TweetsController, type: :routing do
 
     it "route dislike to the tweets controller" do 
       
-        expect(delete("/tweets/1/dislike")).
-        to route_to("tweets#disliked", id: '1')
+        expect(delete("/tweets/1/destroy")).
+        to route_to("tweets#destroy", id: '1')
     end
 
     it "route retweet to the tweets controller" do 

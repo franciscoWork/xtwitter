@@ -30,6 +30,7 @@ RSpec.describe Tweet, type: :model do
     let(:another_user) {create(:user)}
     let(:tweet) {create(:tweet, user: user)}
 
+
     before do 
     create_list(:tweet, 2, user: user)
   
@@ -56,9 +57,56 @@ RSpec.describe Tweet, type: :model do
         expect(tweetreplies.includes(:tweetreplies).where(tweetreplies: {user_id: user.id}).count).to eq(1)
       end
     end 
+
+    #scopes quote
+
+    describe 'scope quote', count: true do 
+      it 'count of a scope per user' do
+        user_id = user.id 
+        countQuotes = Tweet.quotes_count_by_user(user_id)
+        expect(countQuotes).not_to equal(0)
+
+      end 
+    end 
+
+    #retweet
+    describe 'methods', only: true do 
+      it 'returns a retweet' do
+        tweet_id = tweet.id
+        user_id = user.id
+
+        retweeted = Tweet.retweet(tweet_id)
+        expect(retweeted).to eq(true) 
+      end 
+    end 
+
+    #quote 
+        describe 'method for a quote tweet' ,quote: true do
+          it 'returns a quote' do 
+            user_id = user.id 
+            tweet_id = tweet.id 
+            body = "hello it is a prove"
+
+            quoted = Tweet.create_quote_tweet(user_id, body, tweet_id)
+            expect(quoted.quote_id).not_to equal(nil)
+      end
+    end 
+
+    #hastags
+
+    describe 'Hashtags', hastag: true do 
+      it 'return a new hastags and scan if this already exits' do
+        text = "#hola2a"
+        text2 = "#holaa"
+
+        hastagScan = Tweet.create_or_find_hasgtags(text)
+        hastagScan2 = Tweet.create_or_find_hasgtags(text2)
+        expect(hastagScan).to be == hastagScan2
+      end 
+    end  
+
+
   end
 end 
 
-RSpec.describe "routes for tweets", type: :routing do
-  # tests go here
- end
+
